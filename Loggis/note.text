@@ -1,0 +1,27 @@
+class InventoryController extends Controller
+{
+    public function index() { }
+    public function create() { }
+    public function store(Request $request) { }
+    public function show($id) { }
+    public function edit($id) { }
+    public function update(Request $request, $id) { }
+    public function destroy($id) { }
+}
+
+api response in traits 
+
+namespace App\Http\Controllers\Traits;
+
+trait ApiResponse
+{
+    public function success($data, $message = 'Success')
+    {
+        return response()->json(['status' => true, 'message' => $message, 'data' => $data]);
+    }
+
+    public function error($message = 'Error', $code = 400)
+    {
+        return response()->json(['status' => false, 'message' => $message], $code);
+    }
+}
